@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
         float VerticalMovement = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(horizontalMovement,0,VerticalMovement);
         rigidbody.AddForce(movement*speed);
+        if(rigidbody.position.y < 0)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 }
 
